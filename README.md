@@ -6,6 +6,7 @@ Created for students who want to learn basis of R programming.
 
 Just for fun
 
+-------------------------------------------------------------------------------------------------
 
 __References__
 
