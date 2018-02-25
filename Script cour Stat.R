@@ -1,5 +1,5 @@
 setwd("~/Stats")
-file1="Data Fruit cour Stats.txt"
+file1="Data_example.txt"
 data <-read.delim(file1, dec=",") 
 
 names(data)
@@ -58,14 +58,14 @@ kruskal.test(data$Diam_moyen~data$ID)
 
 
 R1 <- aov(Saccharose~ID, data= data)
-require(laercio) # package spécifique
+require(laercio) # package spÃ©cifique
 LDuncan(R1) 
 
-TukeyHSD(R1,ordered=TRUE) # test de Tukey (toutes les comparaisons 2à 2)
+TukeyHSD(R1,ordered=TRUE) # test de Tukey (toutes les comparaisons 2Ã  2)
 require(graphics)
 plot(TukeyHSD(R1)) 
 
-library(multcomp) #pour des comparaisons spécifiques
+library(multcomp) #pour des comparaisons spÃ©cifiques
 ht <- glht(R1, linfct = mcp ("ID" = c("Geno1.Stress-Geno1.Control=0", "Geno2.Stress-Geno2.Control=0")))
 confint(ht, level = 0.95)
 summary(ht)
@@ -76,11 +76,11 @@ library(pgirmess)
 kruskalmc(data$Diam_moyen~data$ID, data=data, probs=0.05)
 
 
-cor(data[,-c(1,2)], method = "spearman") # matrice de corrélations
+cor(data[,-c(1,2)], method = "spearman") # matrice de corrÃ©lations
 cor.test(data$Diam_moyen,data$Glucose,
          alternative = c("two.sided", "less", "greater"),
-         method = c("pearson", "kendall", "spearman"), # test à choisir
-         exact = NULL, conf.level = 0.95, continuity = FALSE) # corrélation deux à deux
+         method = c("pearson", "kendall", "spearman"), # test Ã  choisir
+         exact = NULL, conf.level = 0.95, continuity = FALSE) # corrÃ©lation deux Ã  deux
 
 
 rcorr(as.matrix(data2), type = "pearson")  
